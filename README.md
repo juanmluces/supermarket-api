@@ -5,8 +5,8 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
+<p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+<p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
@@ -15,71 +15,70 @@
 <a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
 <a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
 <a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+<a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
+<a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+<a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Supermarket API
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This repository contains a REST API for managing supermarket products and categories, built with [NestJS](https://nestjs.com/). The API provides endpoints for creating, retrieving, updating, and deleting products and categories, as well as for paginated listing and filtering of products by category.
 
-## Project setup
+### Features
 
-```bash
-$ npm install
-```
+- **Products Management**: Create, retrieve, update, and delete products.
+- **Categories Management**: Create, retrieve, update, and delete categories.
+- **Pagination**: Support for paginated listing of products.
+- **Filtering**: Filter products by category.
+- **Swagger Documentation**: Auto-generated API documentation using Swagger.
 
-## Compile and run the project
+### Technologies
 
-```bash
-# development
-$ npm run start
+- **NestJS**: A progressive Node.js framework for building efficient, reliable, and scalable server-side applications.
+- **TypeScript**: A strongly typed programming language that builds on JavaScript.
+- **Swagger**: API documentation and testing tool.
 
-# watch mode
-$ npm run start:dev
+### Endpoints
 
-# production mode
-$ npm run start:prod
-```
+#### Products
 
-## Run tests
+- `GET /products`: Retrieve a paginated list of products, optionally filtered by category.
+- `POST /products`: Create a new product.
+- `GET /products/:id`: Retrieve a product by ID.
+- `PUT /products/:id`: Update a product by ID.
+- `DELETE /products/:id`: Delete a product by ID.
 
-```bash
-# unit tests
-$ npm run test
+#### Categories
 
-# e2e tests
-$ npm run test:e2e
+- `GET /categories`: Retrieve a list of all categories.
+- `POST /categories`: Create a new category.
+- `GET /categories/:id`: Retrieve a category by ID.
+- `PUT /categories/:id`: Update a category by ID.
+- `DELETE /categories/:id`: Delete a category by ID.
 
-# test coverage
-$ npm run test:cov
-```
+### Getting Started
 
-## Resources
+#### Prerequisites
 
-Check out a few resources that may come in handy when working with NestJS:
+- Node.js (>= 12.x)
+- npm (>= 6.x)
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+#### Installation
 
-## Support
+1. Clone the repository:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+   ```bash
+   git clone https://github.com/yourusername/supermarket-api.git
+   cd supermarket-api
 
-## Stay in touch
+   ```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up environment variables: Create a .env file in the root directory and add the necessary environment variables.
+4. Run the application:
+   ```bash
+   npm run start
+   ```
