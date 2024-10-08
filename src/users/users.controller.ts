@@ -32,7 +32,7 @@ export class UsersController {
   }
 
   @Get(':email')
-  @ApiOperation({ summary: 'Get a user by email' })
+  @ApiOperation({ summary: 'Get a user by email and sends api key by mail' })
   @ApiOkResponseSingle(UserDto)
   async getByEmail(
     @Param('email') email: string

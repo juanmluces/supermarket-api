@@ -12,14 +12,13 @@ export class UserDto {
   email: string;
 
   @ApiProperty({ example: '123456', description: 'The API key of the user' })
-  apiKey: string;
+  apiKey?: string;
 
   @ApiProperty({
     example: '2023-01-01T00:00:00Z',
     description: 'The creation date of the category'
   })
   createdAt: string;
-
   constructor(userEntity: User) {
     this.id = userEntity.id;
     this.email = userEntity.email;
