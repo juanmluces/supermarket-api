@@ -34,14 +34,6 @@ export class CategoriesController {
     });
   }
 
-  @ApiOperation({ summary: 'Get Category with all products' })
-  @Get(':id')
-  @ApiOkResponseList(CategoryDto)
-  async getCategory(@Param('id', ParseIntPipe) id: number) {
-    const category = await this.categoriesService.getCategory(id);
-    return new AppResponse({ data: category });
-  }
-
   @Post()
   @ApiOperation({ summary: 'Create a new category' })
   @ApiBody({ type: CreateCategoryDto })

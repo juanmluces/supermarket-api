@@ -26,20 +26,11 @@ export class CategoryDto {
   })
   updatedAt: string;
 
-  // @ApiProperty({
-  //   type: () => [ProductDto],
-  //   description: 'List of products in the category'
-  // })
-  // products: ProductDto[];
-
   constructor(entity: Category) {
     this.id = entity.id;
     this.name = entity.name;
     this.image = entity.image;
     this.createdAt = entity.createdAt.toISOString();
     this.updatedAt = entity.updatedAt.toISOString();
-    // if (entity.products) {
-    //   this.products = entity.products.map((product) => new ProductDto(product));
-    // }
   }
 }
