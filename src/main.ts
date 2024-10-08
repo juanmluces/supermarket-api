@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 import { CategoriesModule } from './categories/categories.module';
 import { ResponseInterceptor } from './common';
 import { ProductsModule } from './products/products.module';
+import { UsersModule } from './users/users.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -16,7 +17,7 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config, {
-    include: [ProductsModule, CategoriesModule]
+    include: [UsersModule, ProductsModule, CategoriesModule]
   });
   SwaggerModule.setup('api', app, document, {
     explorer: true,

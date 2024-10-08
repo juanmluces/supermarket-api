@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CategoriesModule } from './categories/categories.module';
 import { ProductsModule } from './products/products.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -17,10 +18,11 @@ import { ProductsModule } from './products/products.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: !process.env.DB_PRODUCTION
+      synchronize: process.env.DB_PRODUCTION === 'false'
     }),
-    ProductsModule,
-    CategoriesModule
+    UsersModule,
+    CategoriesModule,
+    ProductsModule
   ],
   controllers: [AppController],
   providers: [AppService]

@@ -6,7 +6,8 @@ import {
   Param,
   ParseIntPipe,
   Post,
-  Query
+  Query,
+  UseGuards
 } from '@nestjs/common';
 import {
   ApiBody,
@@ -15,6 +16,7 @@ import {
   ApiQuery,
   ApiTags
 } from '@nestjs/swagger';
+import { ApiKeyGuard } from 'src/auth/guards/api-key/api-key.guard';
 import {
   ApiOkResponseCustomProperties,
   ApiOkResponseList,
@@ -27,6 +29,13 @@ import { ProductsService } from './products.service';
 
 @ApiTags('Products')
 @Controller('products')
+@UseGuards(ApiKeyGuard)
+@ApiQuery({
+  name: 'apiKey',
+  type: String,
+  required: true,
+  description: 'API key for authentication'
+})
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 

@@ -5,12 +5,12 @@ export class CategoryDto {
   @ApiProperty({ example: 1, description: 'Id of category' })
   id: number;
 
-  @ApiProperty({ example: 'Congelados', description: 'Nombre de la categoría' })
+  @ApiProperty({ example: 'Congelados', description: 'The category name' })
   name: string;
 
   @ApiProperty({
     example: 'https://sample-image.jpg',
-    description: 'Imagen de la categoría'
+    description: 'The category image'
   })
   image: string;
 

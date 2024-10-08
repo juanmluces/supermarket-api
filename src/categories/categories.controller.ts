@@ -5,9 +5,16 @@ import {
   Get,
   Param,
   ParseIntPipe,
-  Post
+  Post,
+  UseGuards
 } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiOperation,
+  ApiParam,
+  ApiQuery,
+  ApiTags
+} from '@nestjs/swagger';
 import {
   ApiOkResponseCustomProperties,
   ApiOkResponseList,
@@ -16,11 +23,19 @@ import {
 } from '../common';
 import { CategoriesService } from './categories.service';
 // import { CategoryDto } from './dto/category-simple.dto';
+import { ApiKeyGuard } from 'src/auth/guards/api-key/api-key.guard';
 import { CategoryDto } from './dto/category.dto';
 import { CreateCategoryDto } from './dto/create-category.dto';
 
 @ApiTags('Categories')
 @Controller('categories')
+@UseGuards(ApiKeyGuard)
+@ApiQuery({
+  name: 'apiKey',
+  type: String,
+  required: true,
+  description: 'API key for authentication'
+})
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
