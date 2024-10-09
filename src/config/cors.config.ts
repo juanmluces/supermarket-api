@@ -11,7 +11,11 @@ export const createCorsOptions = (
 
   return {
     origin: (origin, callback) => {
-      if (!origin || acceptedOrigins.includes(origin)) {
+      if (
+        !origin ||
+        acceptedOrigins.includes(origin) ||
+        acceptedOrigins.includes('*')
+      ) {
         return callback(null, true);
       }
       return callback(
