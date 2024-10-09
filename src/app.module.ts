@@ -2,6 +2,8 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as path from 'path';
 import { AppController } from './app.controller';
@@ -45,12 +47,16 @@ import { UsersModule } from './users/users.module';
         }
       }
     }),
+    ThrottlerModule.forRoot([
+      { name: 'short', ttl: 1000, limit: 3 },
+      { name: 'long', ttl: 60000, limit: 100 }
+    ]),
     UsersModule,
     CategoriesModule,
     ProductsModule,
     EmailModule
   ],
   controllers: [AppController],
-  providers: [AppService]
+  providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }]
 })
 export class AppModule {}

@@ -1,14 +1,20 @@
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { CategoriesModule } from './categories/categories.module';
 import { ResponseInterceptor } from './common';
+import { createCorsOptions } from './config/cors.config';
 import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalInterceptors(new ResponseInterceptor());
+  app.setGlobalPrefix('api');
+  app.enableCors(createCorsOptions(app.get(ConfigService)));
+  app.getHttpAdapter().get('/', (_, res) => res.redirect('/docs'));
+  app.getHttpAdapter().getInstance().disable('x-powered-by');
 
   const config = new DocumentBuilder()
     .setTitle('Supermarket API')
@@ -19,7 +25,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config, {
     include: [UsersModule, ProductsModule, CategoriesModule]
   });
-  SwaggerModule.setup('api', app, document, {
+  SwaggerModule.setup('docs', app, document, {
     explorer: true,
     swaggerOptions: {
       filter: true,
@@ -27,6 +33,6 @@ async function bootstrap() {
     }
   });
 
-  await app.listen(3000);
+  await app.listen(process.env.SERVER_PORT || 3000);
 }
 bootstrap();
